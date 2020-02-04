@@ -36,6 +36,9 @@ $$\rho = \frac{Cov(X,Y)} {\sigma_x \sigma_y}$$
 
 * Spearman相关系数和kendall相关系数都是建立在秩和观测值的相对大小的基础上得到，是一种更为一般性的非参数方法，对离群值的敏感度较低，因而也更具有耐受性，度量的主要是变量之间的联系。
 
+### 线性回归
+
+
 ## Python相关知识
 ## Pandas和NumPy学习
 ### 资料地址：
@@ -43,4 +46,16 @@ $$\rho = \frac{Cov(X,Y)} {\sigma_x \sigma_y}$$
 * [Pandas中文网](https://www.pypandas.cn)
 * [Python 3.7.6中文文档](https://docs.python.org/zh-cn/3.7/index.html)
 * [Python Data Analysis with Pandas and Matplotlib](https://ourcodingclub.github.io/2018/04/18/pandas-python-intro.html)
+
+## MatPlotLib和Seaborn学习
+### 直方图(histogram)
+直⽅图（histogram）是⼀种可以对值频率进⾏离散化显示的柱状图。数据点被拆分到离散的、间隔均 匀的⾯元中，绘制的是各⾯元中数据点的数量。直方图中非常重要的概念就是**bins**(X的值域被划分为不想交的连续子域，子域称作bucket或者bin，是X的数据分布的不相交的子集。bin的范围被称为宽度。通常，诸bins是等宽的).
+如何确定合理的bins的值，可以利用 [Freedman-Diaconis rule](https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule) 进行计算:
+$$ Bin \ width = 2\frac{IQR(x)}{\sqrt[3]{n}} $$
+其中，IQR(x)是[interquartile range 数据的四分位](https://en.wikipedia.org/wiki/Interquartile_range)，n是观测样本x的数量。
+> 其实就是bw <- 2 * IQR(x) / length(x)^(1/3)
+
+### 密度图(density)
+密度图，它是通过计算“可能会产⽣观测数据的连续概率分布的估计”⽽产⽣ 的。⼀般的过程是将该分布近似为⼀组核（即诸如正态分布之类的较为简单的分布）。因此，密度图 也被称作KDE（Kernel Density Estimate，核密度估计）图。
+
 
