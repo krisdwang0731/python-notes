@@ -36,6 +36,7 @@ $$\rho = \frac{Cov(X,Y)} {\sigma_x \sigma_y}$$
 
 * Spearman相关系数和kendall相关系数都是建立在秩和观测值的相对大小的基础上得到，是一种更为一般性的非参数方法，对离群值的敏感度较低，因而也更具有耐受性，度量的主要是变量之间的联系。
 
-
+## Python相关知识
+## Pandas和NumPy学习
 
 
