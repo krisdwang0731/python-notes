@@ -38,5 +38,9 @@ $$\rho = \frac{Cov(X,Y)} {\sigma_x \sigma_y}$$
 
 ## Python相关知识
 ## Pandas和NumPy学习
-
+### 资料地址：
+* [NumPy教程](https://www.runoob.com/numpy/numpy-tutorial.html)  
+* [Pandas中文网](https://www.pypandas.cn)
+* [Python 3.7.6中文文档](https://docs.python.org/zh-cn/3.7/index.html)
+* [Python Data Analysis with Pandas and Matplotlib](https://ourcodingclub.github.io/2018/04/18/pandas-python-intro.html)
 
