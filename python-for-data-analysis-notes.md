@@ -40,6 +40,36 @@ $$\rho = \frac{Cov(X,Y)} {\sigma_x \sigma_y}$$
 
 
 ## Python相关知识
+### 一些小技巧 
+* 在学习代码的过程中，经常看到一段代码`np.random.seed(12345)` ，特地查了一下这段代码的作用，原来每次运行代码时设置相同的seed，则每次生成的随机数也相同，如果不设置seed，则每次生成的随机数都会不一样。关于seed()的用法：  
+  **seed()** 用于指定随机数生成时所用算法开始的整数值,  
+  * 如果使用相同的seed( )值，则每次生成的随即数都相同；
+  * 如果不设置这个值，则系统根据时间来自己选择这个值，此时每次生成的随机数因时间差异而不同
+  * 设置的seed()值仅一次有效
+  * 
+  例如：  
+  
+  ```python 
+   import numpy as np
+   #不使用seed
+   np.random.randn(3)
+   [out] > array([ 0.1876, -0.3299, -1.1928])
+   np.random.randn(3)
+   [out] > array([-0.2049, -0.3588,  0.6035])
+   
+   #使用seed
+   np.random.seed(3)
+   np.random.randn(3)
+   [out] > array([1.7886, 0.4365, 0.0965])
+   # 再次调用
+   np.random.seed(3)
+   np.random.randn(3)
+   [out] > array([1.7886, 0.4365, 0.0965])
+  ```
+  显示两次结果相同
+  
+* f
+
 ## Pandas和NumPy学习
 ### 资料地址：
 * [NumPy教程](https://www.runoob.com/numpy/numpy-tutorial.html)  
@@ -57,5 +87,10 @@ $$ Bin \ width = 2\frac{IQR(x)}{\sqrt[3]{n}} $$
 
 ### 密度图(density)
 密度图，它是通过计算“可能会产⽣观测数据的连续概率分布的估计”⽽产⽣ 的。⼀般的过程是将该分布近似为⼀组核（即诸如正态分布之类的较为简单的分布）。因此，密度图 也被称作KDE（Kernel Density Estimate，核密度估计）图。
+> 利用matplotlib绘制密度图例子：
+
+```python
+import pandas as pd
+```
 
 
