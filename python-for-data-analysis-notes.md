@@ -104,21 +104,27 @@ $$
 >矩阵乘法和矩阵相关定律
 
 $$ {A}({B}+{C}) = {AB}+{AC} $$
+
 $$
   A = \begin{bmatrix} 3 & 3 \\ 1 & 4 \\ 7 & 6 \end{bmatrix},
   B = \begin{bmatrix} 5 \\ 2 \end{bmatrix} ,
   C = \begin{bmatrix} 4 \\ 3 \end{bmatrix} 
 $$
+
 $$
   A(B + C) = \begin{bmatrix} 3 & 3 \\ 1 & 4 \\ 7 & 6 \end{bmatrix} \times \begin{pmatrix} \begin{bmatrix} 5 \\ 2 \end{bmatrix} +  \begin{bmatrix} 4 \\ 3 \end{bmatrix} \end{pmatrix} = \begin{bmatrix} 2 & 3\\1&4\\7&6 \end{bmatrix} \times \begin{bmatrix} 9\\5 \end{bmatrix} \\
   =  \begin{bmatrix} 2 \times 9 + 3 \times 5\\ 1\times 9 + 4 \times 5 \\ 7 \times 9 + 6 \times 5 \end{bmatrix} = \begin{bmatrix} 33\\29\\93 \end{bmatrix}
 $$
+
 等价于
+
 $$
 AB \times AC = \begin{bmatrix} 2&3\\1&4\\7&6 \end{bmatrix} \times \begin{bmatrix} 5\\2 \end{bmatrix} + \begin{bmatrix} 2&3\\1&4\\7&6 \end{bmatrix} \times \begin{bmatrix} 4\\3 \end{bmatrix} \\
 = \begin{bmatrix} 2\times 5 + 3 \times 2 \\ 1 \times 5 + 4 \times 2 \\ 7 \times 5 + 6 \times 2 \end{bmatrix} + \begin{bmatrix} 2\times 4 + 3 \times 3 \\ 1 \times 4 + 4 \times 3 \\ 7 \times 4 + 6 \times 3 \end{bmatrix}\\
   =  \begin{bmatrix} 16\\13 \\47 \end{bmatrix} + \begin{bmatrix} 17\\ 16 \\46 \end{bmatrix} = \begin{bmatrix} 33\\29\\93 \end{bmatrix}
+
 $$
+
 对应的Python代码如下：  
 
 ```python
