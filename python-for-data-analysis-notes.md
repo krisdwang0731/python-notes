@@ -58,7 +58,80 @@ $$
 
 两个相同维数的向量x和y的**点积**（dot product）可以看作矩阵乘积$X^Ty$。可以把矩阵乘积 C=AB中计算$C_{i,j}$的步骤看作是A的第i行和B的第j列之间的点积。
 
+矩阵乘积运算具有很多的性质,比如，矩阵乘积服从分配律：
+$$
+  A(B + C) = AB + AC
+$$
+矩阵乘积也服从结合律：
+$$
+  A(BC) = (AB)C
+$$
+矩阵乘积不满足交换律(AB = BA的情况并非总是满足)，但是，两个向量的**点积**（dot product）满足交换律：
+$$
+  x^Ty = y^Tx
+$$
+矩阵乘积的转置有如下简单的形式：
+$$
+  （AB）^T = B^TA^T
+$$
+利用两个向量点积的结果是标量，标量的转置是自身的事实，我们可以证明：
+$$
+  x^Ty = (x^ty)^T = y^Tx
+$$
+对于如下线性方程组：
+$$
+  Ax = b 
+$$
+其中，$ A \in \Bbb R^{m \times n}$是一个已知矩阵，$b \in \Bbb R^m$是一个已知向量，$x \in \Bbb R^n$是一个要求解的为止向量。向量x的每一个元素$x_i$都是未知的。矩阵A的每一行和b中对应的元素构成一个约束。我们可以把 $ Ax = b$重写为：
 
+$$
+   A_{1,:}x = b_1\\
+   A_{1,:}x = b_2\\
+   \cdots \\
+   A_{m,:}x = b_m
+$$
+或者更明确地写成：
+$$
+  A_{1,1}x_1 + A_{1,2}x_2 + \cdots + A_{1,n}x_n = b_1 \\
+  A_{2,1}x_1 + A_{2,2}x_2 + \cdots + A_{2,n}x_n = b_2 \\
+  \cdots \\
+  A_{m,1}x_1 + A_{m,2}x_2 + \cdots + A_{m,n}x_n = b_m \\
+$$
+矩阵的向量乘积符号为这种形式的方程提供了跟紧凑的表示。
+
+下面利用python的numpy库，列举几个矩阵乘法的例子：
+
+>矩阵乘法和矩阵相关定律
+
+$$ {A}({B}+{C}) = {AB}+{AC} $$
+$$
+  A = \begin{bmatrix} 3 & 3 \\ 1 & 4 \\ 7 & 6 \end{bmatrix},
+  B = \begin{bmatrix} 5 \\ 2 \end{bmatrix} ,
+  C = \begin{bmatrix} 4 \\ 3 \end{bmatrix} 
+$$
+$$
+  A(B + C) = \begin{bmatrix} 3 & 3 \\ 1 & 4 \\ 7 & 6 \end{bmatrix} \times \begin{pmatrix} \begin{bmatrix} 5 \\ 2 \end{bmatrix} +  \begin{bmatrix} 4 \\ 3 \end{bmatrix} \end{pmatrix} = \begin{bmatrix} 2 & 3\\1&4\\7&6 \end{bmatrix} \times \begin{bmatrix} 9\\5 \end{bmatrix} \\
+  =  \begin{bmatrix} 2 \times 9 + 3 \times 5\\ 1\times 9 + 4 \times 5 \\ 7 \times 9 + 6 \times 5 \end{bmatrix} = \begin{bmatrix} 33\\29\\93 \end{bmatrix}
+$$
+等价于
+$$
+AB \times AC = \begin{bmatrix} 2&3\\1&4\\7&6 \end{bmatrix} \times \begin{bmatrix} 5\\2 \end{bmatrix} + \begin{bmatrix} 2&3\\1&4\\7&6 \end{bmatrix} \times \begin{bmatrix} 4\\3 \end{bmatrix} \\
+= \begin{bmatrix} 2\times 5 + 3 \times 2 \\ 1 \times 5 + 4 \times 2 \\ 7 \times 5 + 6 \times 2 \end{bmatrix} + \begin{bmatrix} 2\times 4 + 3 \times 3 \\ 1 \times 4 + 4 \times 3 \\ 7 \times 4 + 6 \times 3 \end{bmatrix}\\
+  =  \begin{bmatrix} 16\\13 \\47 \end{bmatrix} + \begin{bmatrix} 17\\ 16 \\46 \end{bmatrix} = \begin{bmatrix} 33\\29\\93 \end{bmatrix}
+$$
+对应的Python代码如下：  
+
+```python
+import numpy as np
+A = np.array([[2, 3], [1, 4], [7, 6]])
+B = np.array([[5], [2]])
+C = np.array([[4], [3]])
+# D = A(B + C)
+D = A.dot(B + C)
+# 等价于：D = AB + AC
+D = A.dot(B) + A.dot(C)
+```
+### 单位矩阵和逆矩阵
 
 
 ## 统计学知识
