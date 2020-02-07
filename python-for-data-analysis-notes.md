@@ -122,7 +122,6 @@ $$
 AB \times AC = \begin{bmatrix} 2&3\\1&4\\7&6 \end{bmatrix} \times \begin{bmatrix} 5\\2 \end{bmatrix} + \begin{bmatrix} 2&3\\1&4\\7&6 \end{bmatrix} \times \begin{bmatrix} 4\\3 \end{bmatrix} \\
 = \begin{bmatrix} 2\times 5 + 3 \times 2 \\ 1 \times 5 + 4 \times 2 \\ 7 \times 5 + 6 \times 2 \end{bmatrix} + \begin{bmatrix} 2\times 4 + 3 \times 3 \\ 1 \times 4 + 4 \times 3 \\ 7 \times 4 + 6 \times 3 \end{bmatrix}\\
   =  \begin{bmatrix} 16\\13 \\47 \end{bmatrix} + \begin{bmatrix} 17\\ 16 \\46 \end{bmatrix} = \begin{bmatrix} 33\\29\\93 \end{bmatrix}
-
 $$
 
 对应的Python代码如下：  
@@ -136,9 +135,64 @@ C = np.array([[4], [3]])
 D = A.dot(B + C)
 # 等价于：D = AB + AC
 D = A.dot(B) + A.dot(C)
+# 矩阵转置：
+C_t = C.T
 ```
 ### 单位矩阵和逆矩阵
+为了描述**逆矩阵**（matrix inversion），需要先定义**单位矩阵**(identity matrix）。任意向量和单位矩阵相乘，都不会改变。记单位矩阵为$I_n$。形式上，$ I_n \in \Bbb R^{n \times n} $,
+$$ \forall x \in \Bbb R^{n}, I_nx = x. $$
+单位矩阵结构简单，所以沿对角线的元素都是1， 而所以其它位置的元素都是0：
+$$
+\begin{bmatrix} 1&0&0\\0&1&0\\0&0&1 \end{bmatrix}
+$$
+矩阵A的逆矩阵记作 $A^{-1}$, 满足如下条件：
+$$ A^{-1}A = I_n $$
+可以通过如下步骤求解：
+$$
+  Ax = b \\
+  A^{-1}Ax=A^{-1}b \\
+  I_nx=A^{-1}b
+  x = A^{-1}b
+$$
+当逆矩阵$A^{-1}$存在时，有几种不同的算法都能找到它的闭解形式。理论上，相同的逆矩阵可用于多次求解不同向量$b$的方程。$\color{red}{然而，逆矩阵 A^{-1}主要是作为理论 工具使用的，并不会在大多数软件应用程序中实际使用。这是因为逆矩阵 \\ A^{-1}在数 字计算机上只能表现出有限的精度，有效使用向量 b的算法通常可以得到更精确的 x}$。
 
+对应的Python代码如下：
+
+```python
+import numpy as np
+np.eye(4) 
+
+=> array([[1., 0., 0., 0.],
+       [0., 1., 0., 0.],
+       [0., 0., 1., 0.],
+       [0., 0., 0., 1.]])
+```
+用python求解 $ I_nx = x$  
+
+```python
+import numpy as np
+x = np.array([[2], [6], [3]])
+x
+xid = np.eye(x.shape[0]).dot(x)
+xid
+```
+对于$ A^{-1}A = I_n$, 对应的python代码为：
+
+```python
+import numpy as np
+A = np.array([[3, 0, 2], [2, 0, -2], [0, 1, 1]])
+A_inv = np.linalg.inv()
+A_bis = A_inv.dot(A)
+```
+求解A的逆矩阵，为计算一个非奇异的$(n \times n)$矩阵的逆，可以通过如下步骤进行
+
+$$
+1. 构造 (n \times 2n)的矩阵 （ A | I）\\
+2. 用初等变换把 (A|I)化成(I|B) \\
+3. 读取A_{-1} = B
+$$
+
+### 线性相关和生成子空间
 
 ## 统计学知识
 ### 协方差 （Covariance）
